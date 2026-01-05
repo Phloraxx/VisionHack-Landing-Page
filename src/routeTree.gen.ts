@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PublicRouteImport } from './routes/_public'
 import { Route as PublicIndexRouteImport } from './routes/_public/index'
-import { Route as ApiHelloRouteImport } from './routes/_api/hello'
 
 const PublicRoute = PublicRouteImport.update({
   id: '/_public',
@@ -22,37 +21,28 @@ const PublicIndexRoute = PublicIndexRouteImport.update({
   path: '/',
   getParentRoute: () => PublicRoute,
 } as any)
-const ApiHelloRoute = ApiHelloRouteImport.update({
-  id: '/_api/hello',
-  path: '/hello',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
-  '/hello': typeof ApiHelloRoute
   '/': typeof PublicIndexRoute
 }
 export interface FileRoutesByTo {
-  '/hello': typeof ApiHelloRoute
   '/': typeof PublicIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_public': typeof PublicRouteWithChildren
-  '/_api/hello': typeof ApiHelloRoute
   '/_public/': typeof PublicIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/hello' | '/'
+  fullPaths: '/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/hello' | '/'
-  id: '__root__' | '/_public' | '/_api/hello' | '/_public/'
+  to: '/'
+  id: '__root__' | '/_public' | '/_public/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   PublicRoute: typeof PublicRouteWithChildren
-  ApiHelloRoute: typeof ApiHelloRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -71,13 +61,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicIndexRouteImport
       parentRoute: typeof PublicRoute
     }
-    '/_api/hello': {
-      id: '/_api/hello'
-      path: '/hello'
-      fullPath: '/hello'
-      preLoaderRoute: typeof ApiHelloRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -94,17 +77,7 @@ const PublicRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   PublicRoute: PublicRouteWithChildren,
-  ApiHelloRoute: ApiHelloRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
