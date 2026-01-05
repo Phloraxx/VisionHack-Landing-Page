@@ -1,94 +1,27 @@
 import {
-  HeadContent,
-  Scripts,
-  createRootRouteWithContext,
+  Outlet,
+  createRootRoute,
 } from "@tanstack/react-router";
-import appCss from "../styles.css?url";
 
-import type { QueryClient } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "next-themes";
-import { authMiddleware } from "@/server/functions/auth";
 
-interface MyRouterContext {
-  queryClient: QueryClient;
-}
-
-const scripts: React.DetailedHTMLProps<
-  React.ScriptHTMLAttributes<HTMLScriptElement>,
-  HTMLScriptElement
->[] = [];
-
-if (import.meta.env.VITE_INSTRUMENTATION_SCRIPT_SRC) {
-  scripts.push({
-    src: import.meta.env.VITE_INSTRUMENTATION_SCRIPT_SRC,
-    type: "module",
-  });
-}
-
-export const Route = createRootRouteWithContext<MyRouterContext>()({
-  loader: async () => {
-    const { currentUser } = await authMiddleware();
-
-    return {
-      currentUser,
-    };
-  },
-  head: () => ({
-    meta: [
-      {
-        charSet: "utf-8",
-      },
-      {
-        name: "viewport",
-        content: "width=device-width, initial-scale=1",
-      },
-      {
-        title: "Vision Hack 2026 | Build Beyond the Vision",
-      },
-    ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-    ],
-    scripts: [...scripts],
-  }),
-
-  shellComponent: RootDocument,
+export const Route = createRootRoute({
+  component: RootComponent,
 });
 
-function RootDocument({ children }: { children: React.ReactNode }) {
+function RootComponent() {
   return (
-    <html lang="en" className="scroll-smooth">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-          <Toaster />
-          {/* <TanStackDevtools
-            config={{
-              position: 'bottom-left',
-            }}
-            plugins={[
-              {
-                name: 'Tanstack Router',
-                render: <TanStackRouterDevtoolsPanel />,
-              },
-              TanStackQueryDevtools,
-            ]}
-          /> */}
-        </ThemeProvider>
-        <Scripts />
-      </body>
-    </html>
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="dark"
+      enableSystem
+      disableTransitionOnChange
+    >
+      <div className="scroll-smooth">
+        <Outlet />
+        <Toaster />
+      </div>
+    </ThemeProvider>
   );
 }
