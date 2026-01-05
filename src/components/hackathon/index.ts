@@ -1,0 +1,9 @@
+export { Nav } from "./Nav";
+export { Hero } from "./Hero";
+export { Countdown } from "./Countdown";
+export { About } from "./About";
+export { Timeline } from "./Timeline";
+export { Tracks } from "./Tracks";
+export { Prizes } from "./Prizes";
+export { FAQ } from "./FAQ";
+export { Footer } from "./Footer";
