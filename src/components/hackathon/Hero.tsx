@@ -2,7 +2,6 @@ import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import { useRef } from "react";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { useScrollTo } from "@/hooks/use-scroll";
-import { Link } from "@tanstack/react-router";
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
