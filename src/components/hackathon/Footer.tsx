@@ -4,7 +4,6 @@ import { useScrollTo } from "@/hooks/use-scroll";
 
 const coordinators = [
   { name: "Suraj Krishna K", phone: "7356376285" },
-  { name: "Sinan Sulaiman", phone: "7559908527" },
   { name: "Fiero Jain", phone: "6363837616" },
   { name: "Arjun Das", phone: "6282489905" },
   { name: "YadhuKrishna T M", phone: "9778256341" },
@@ -89,7 +88,7 @@ export function Footer() {
             {/* Social Links */}
             <div className="flex items-center gap-3">
               <motion.a
-                href="#"
+                href="https://www.instagram.com/visionhack2026/"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 className="relative p-3 rounded-xl bg-[#1A1A24] border border-white/5 text-[#A0A0B0] hover:text-white hover:border-[#9B87F5]/30 transition-all"
@@ -135,7 +134,7 @@ export function Footer() {
           <h4 className="text-white font-bold mb-6 text-center">
             Event Coordinators
           </h4>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {coordinators.map((coordinator) => (
               <div
                 key={coordinator.name}
@@ -179,13 +178,13 @@ export function Footer() {
             © 2026 Vision Hack
           </p>
           <div className="flex items-center gap-2">
-                <img
-                  src="/images/mulearn-logo.png"
-                  alt="μLearn"
-                  className="w-8 h-8 object-contain"
-                />
-                <span className="text-white font-bold">μLearn Thrissur</span>
-              </div>
+            <img
+              src="/images/mulearn-logo.png"
+              alt="μLearn"
+              className="w-8 h-8 object-contain"
+            />
+            <span className="text-white font-bold">μLearn Thrissur</span>
+          </div>
           <div className="flex items-center gap-6">
             <span className="text-sm text-[#A0A0B0]">
               Build Beyond the Vision

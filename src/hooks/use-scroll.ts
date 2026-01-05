@@ -43,7 +43,7 @@ export function useScroll(options: UseScrollOptions = {}): ScrollState {
     const scrollProgress =
       documentHeight > 0 ? Math.min(scrollY / documentHeight, 1) : 0;
 
-    let scrollDirection: "up" | "down" | null = null;
+    let scrollDirection = scrollState.scrollDirection;
     if (Math.abs(scrollY - lastScrollY.current) > threshold) {
       scrollDirection = scrollY > lastScrollY.current ? "down" : "up";
       lastScrollY.current = scrollY;
