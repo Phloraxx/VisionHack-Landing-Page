@@ -1,0 +1,273 @@
+:root {
+  --background-color: #FAF8F5;
+  --color-green: #286B3B;
+  --color-orange: #E57E25;
+  --color-pink: #D84381;
+  --color-yellow: #F4B41A;
+  --color-black: #111111;
+  --color-gray: #7F8C8D;
+  --font-display: var(--font-outfit), sans-serif;
+  --font-serif: var(--font-playfair), serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-display);
+  background-color: var(--background-color);
+  color: var(--color-black);
+  min-height: 100%;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Background Concentric Ripples */
+.ripple-bg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1400px;
+  height: 900px;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ripple-circle {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px dashed rgba(40, 107, 59, 0.08);
+  border-radius: 50%;
+  animation: rippleScale 20s linear infinite;
+}
+
+@keyframes rippleScale {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Sun Glow Animation */
+.sun-glow {
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(244, 180, 26, 0.4) 0%, rgba(229, 126, 37, 0.1) 50%, rgba(250, 248, 245, 0) 70%);
+  pointer-events: none;
+  z-index: 0;
+  animation: pulseSun 10s ease-in-out infinite alternate;
+}
+
+@keyframes pulseSun {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* CSS Hand-Drawn Circle Accent */
+.circle-accent {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.circle-accent::after {
+  content: "";
+  position: absolute;
+  left: -10px;
+  right: -10px;
+  top: -2px;
+  bottom: -2px;
+  border: 3px solid var(--color-pink);
+  border-radius: 48% 52% 45% 55% / 40% 60% 40% 60%;
+  pointer-events: none;
+  animation: drawCircle 1.8s ease-out forwards;
+}
+
+@keyframes drawCircle {
+  0% {
+    clip-path: polygon(50% 50%, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%);
+  }
+
+  25% {
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 100% 100%, 100% 100%);
+  }
+
+  50% {
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 100%);
+  }
+
+  75% {
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%);
+  }
+
+  100% {
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 50% 0%);
+  }
+}
+
+/* Glassmorphism card utility */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(40, 107, 59, 0.15);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px 0 rgba(40, 107, 59, 0.05);
+}
+
+/* Micro-animations */
+.button-primary {
+  background-color: var(--color-green);
+  color: #ffffff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 15px rgba(40, 107, 59, 0.2);
+}
+
+.button-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(40, 107, 59, 0.35);
+  background-color: #1f502c;
+}
+
+.button-primary:active {
+  transform: translateY(-1px);
+}
+
+/* Scroll Indicators and Layout Containers */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.title-display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.title-serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* Partner Logos Section Layout & Alignment */
+.partner-logos-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 32px 48px;
+  padding: 40px 24px;
+  background-color: #ffffff;
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  width: 100%;
+}
+
+.partner-logo-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.2s ease;
+}
+
+.partner-logo-item:hover {
+  transform: translateY(-2px);
+}
+
+.partner-logo-img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  opacity: 0.95;
+  transition: opacity 0.2s ease;
+}
+
+.partner-logo-item:hover .partner-logo-img {
+  opacity: 1;
+}
+
+.partner-logo-text-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.partner-logo-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-black);
+  line-height: 1.2;
+}
+
+.partner-logo-subtitle {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--color-gray);
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+/* Responsive Scaling for Partner Logos */
+@media (max-width: 768px) {
+  .partner-logos-section {
+    gap: 24px 32px;
+    padding: 28px 16px;
+  }
+  
+  .partner-logo-item {
+    gap: 12px;
+  }
+
+  .partner-logo-img {
+    height: 32px;
+  }
+  
+  .partner-logo-title {
+    font-size: 0.85rem;
+  }
+  
+  .partner-logo-subtitle {
+    font-size: 0.65rem;
+  }
+}
