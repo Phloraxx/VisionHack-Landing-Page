@@ -12,7 +12,6 @@ import Calendar from "./_components/Calendar";
 import Bulit from "./_components/bulit";
 import Leadership from "./_components/leadership";
 import Qa from "./_components/qa";
-import Contact from "./_components/contact";
 import Footer from "../component/Footer";
 import VisualEffects from "./_components/VisualEffects";
 
@@ -54,9 +53,6 @@ export default function Homepage() {
 
       {/* Questions, Answered Section */}
       <Qa />
-
-      {/* Contact Section */}
-      <Contact />
 
       {/* Footer Section */}
       <Footer />

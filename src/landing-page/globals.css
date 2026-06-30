@@ -251,23 +251,28 @@ body {
 /* Responsive Scaling for Partner Logos */
 @media (max-width: 768px) {
   .partner-logos-section {
-    gap: 24px 32px;
-    padding: 28px 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;   /* perfect 2 × 2 grid */
+    gap: 20px 16px;
+    padding: 24px 20px;
+    justify-items: center;
   }
-  
+
   .partner-logo-item {
-    gap: 12px;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
   }
 
   .partner-logo-img {
-    height: 32px;
+    height: 28px;
   }
-  
+
   .partner-logo-title {
-    font-size: 0.85rem;
+    font-size: 0.78rem;
   }
-  
+
   .partner-logo-subtitle {
-    font-size: 0.65rem;
+    font-size: 0.60rem;
   }
-}
+}

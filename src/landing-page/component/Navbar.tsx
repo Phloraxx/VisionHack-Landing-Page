@@ -34,7 +34,7 @@ export default function Navbar() {
         </nav>
 
         <div>
-          <a href="#register" id="btn-header-join" className="btn-register-pill">
+          <a href="https://portal.mulearn.org" id="btn-header-join" className="btn-register-pill">
             Register ↗
           </a>
         </div>
@@ -61,7 +61,7 @@ export default function Navbar() {
           <li><a href="#faqs" onClick={() => setMobileMenuOpen(false)}>FAQ</a></li>
         </ul>
         <a
-          href="#register"
+          href="https://portal.mulearn.org"
           onClick={() => setMobileMenuOpen(false)}
           className="btn-register-pill"
           style={{ width: "100%", textAlign: "center", display: "block", marginTop: "20px" }}
