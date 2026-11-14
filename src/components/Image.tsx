@@ -11,5 +11,12 @@ export default function Image({ src, alt, priority, ...props }: ImageProps) {
   const resolvedSrc = typeof src === "object" && src !== null ? src.src : src;
 
   // Render standard img element
-  return <img src={resolvedSrc} alt={alt} {...props} />;
+  return (
+    <img
+      {...props}
+      src={resolvedSrc}
+      alt={alt}
+      loading={priority ? "eager" : "lazy"}
+    />
+  );
 }
